@@ -4009,26 +4009,26 @@ body:not(.is-preload) .reveal {
 /* Spectral-style animated banner */
 
 #banner {
-  display: -moz-flex;
-  display: -webkit-flex;
-  display: -ms-flex;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100vh;
-  background-image: linear-gradient(to top, #2e3842, #4f5b66); /* Adjust bg as needed */
+  background-image: linear-gradient(to top, #2e3842, #4f5b66);
   color: #fff;
   overflow: hidden;
-  position: relative;
 }
 
 #banner .inner {
   z-index: 2;
   max-width: 60em;
+  margin: 0 auto;
+  padding: 0 2em;
 }
 
-#banner h2, #banner p {
+#banner h2,
+#banner p {
   opacity: 0;
   transform: translateY(1em);
   transition: opacity 1.25s ease, transform 1.25s ease;
@@ -4051,26 +4051,32 @@ body:not(.is-preload) #banner p {
   border-bottom: dotted 1px;
 }
 
-/* Decorative sliding lines */
-#banner:before,
-#banner:after {
+/* Decorative Lines */
+#banner::before,
+#banner::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
   background: #fff;
-  top: 0;
-  left: 0;
   transform: scaleX(0);
-  transform-origin: left;
-  animation: slideInLeft 1.5s forwards ease-out;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
 }
 
-#banner:after {
-  top: auto;
+#banner::before {
+  top: 0;
+  left: 0;
+  transform-origin: left;
+  animation-name: slideInLeft;
+}
+
+#banner::after {
   bottom: 0;
+  left: 0;
   transform-origin: right;
-  animation: slideInRight 1.5s forwards ease-out;
+  animation-name: slideInRight;
 }
 
 @keyframes slideInLeft {
