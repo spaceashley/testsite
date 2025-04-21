@@ -3996,6 +3996,16 @@ input, select, textarea {
   margin: 0 auto 20px auto; /* centers the image and adds space below */
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(1em);
+  transition: opacity 1.25s ease-out, transform 1.25s ease-out;
+}
+
+body:not(.is-preload) .reveal {
+  opacity: 1;
+  transform: none;
+}
 /* Spectral-style animated banner */
 
 #banner {
